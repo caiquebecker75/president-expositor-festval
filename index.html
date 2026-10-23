@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expositor Président · Festval</title>
+<meta name="description" content="Proposta 75LAB: expositor de chão Président em madeira para a rede Festval — 3D, realidade aumentada em tamanho real e ficha técnica.">
+<meta property="og:title" content="Expositor Président · Festval">
+<meta property="og:description" content="Veja em 3D e em realidade aumentada, em tamanho real.">
+<meta property="og:image" content="og.jpg">
+<meta name="theme-color" content="#16110f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script type="module" src="vendor/model-viewer-4.4.0.min.js"></script>
+<style>
+:root{
+  --bg:#16110f; --panel:#1f1815; --panel2:#271e1a; --line:rgba(215,181,109,.28); --gold:#d7b56d; --gold2:#f0d79a;
+  --cream:#f4ecdd; --muted:#b9aa95; --red:#c2141d; --red2:#8e0f18;
+  --serif:"Playfair Display", Georgia, serif; --sans:"Montserrat", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(22,17,15,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:24px;height:58px}
+.brand{font-weight:600;letter-spacing:.14em;font-size:12px;text-transform:uppercase;white-space:nowrap}
+.brand b{color:var(--gold)}
+nav.anchors{margin-left:auto;display:flex;gap:22px;font-size:13px;color:var(--muted)}
+nav.anchors a{text-decoration:none}
+nav.anchors a:hover{color:var(--cream)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:stretch;padding:34px 0 30px}
+.stage{position:relative;border-radius:22px;overflow:hidden;background:radial-gradient(120% 90% at 50% 38%,#3a2c25 0%,#231a16 52%,#16110f 100%);border:1px solid var(--line);min-height:640px}
+model-viewer{width:100%;height:100%;min-height:640px;--poster-color:transparent;--progress-bar-color:var(--gold)}
+.variants{position:absolute;top:16px;left:16px;display:flex;gap:4px;background:rgba(22,17,15,.7);border:1px solid var(--line);border-radius:999px;padding:4px}
+.variants button{all:unset;cursor:pointer;font-size:12.5px;padding:7px 14px;border-radius:999px;color:var(--muted);font-weight:500}
+.variants button[aria-pressed="true"]{background:var(--cream);color:#1a1310}
+.tools{position:absolute;top:16px;right:16px;display:flex;gap:8px}
+.chip{all:unset;cursor:pointer;font-size:12.5px;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(22,17,15,.7);color:var(--muted)}
+.chip[aria-pressed="true"]{color:var(--gold2);border-color:var(--gold)}
+.ar-btn{all:unset;position:absolute;left:50%;bottom:22px;transform:translateX(-50%);cursor:pointer;background:var(--red);color:#fff;font-weight:600;font-size:14px;letter-spacing:.02em;padding:14px 24px;border-radius:999px;box-shadow:0 10px 30px rgba(194,20,29,.35);display:flex;align-items:center;gap:10px}
+.ar-btn svg{width:18px;height:18px}
+.hotspot{background:rgba(22,17,15,.82);color:var(--gold2);border:1px solid var(--gold);border-radius:6px;font:600 11.5px var(--sans);padding:4px 8px;white-space:nowrap;pointer-events:none}
+model-viewer:not([data-medidas]) .hotspot{display:none}
+
+.intro{display:flex;flex-direction:column;gap:22px;padding-top:6px}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.4vw,58px);line-height:1.04;margin:0}
+h1 em{color:var(--gold2)}
+.lede{color:var(--muted);font-size:17px;margin:0;max-width:34em}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.facts div{padding:13px 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(odd){padding-right:18px}
+.facts dt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:3px 0 0;font-size:15.5px}
+.qr{display:flex;gap:18px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px}
+.qr img{width:112px;height:112px;border-radius:10px;background:var(--cream);padding:8px;flex:none}
+.qr strong{display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.2;margin-bottom:4px}
+.qr p{margin:0;color:var(--muted);font-size:14px}
+
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;margin:0 0 10px}
+h2 em{color:var(--gold2)}
+.sub{color:var(--muted);margin:0 0 30px;max-width:46em}
+
+/* galeria */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.gallery figure{margin:0;position:relative;border-radius:14px;overflow:hidden;background:var(--panel);cursor:zoom-in}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery figure:hover img{transform:scale(1.025)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 11px;font-size:12.5px;color:var(--cream);background:linear-gradient(transparent,rgba(10,7,6,.78))}
+.g-a{grid-column:span 5;aspect-ratio:4/5}.g-b{grid-column:span 4;aspect-ratio:4/5}.g-c{grid-column:span 3;aspect-ratio:4/5}
+.g-w{grid-column:span 7;aspect-ratio:25/18}.g-s{grid-column:span 5;aspect-ratio:25/18}
+.g-full{grid-column:span 12;aspect-ratio:16/9}
+
+/* ficha */
+.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.spec div{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.spec div:nth-child(3n){border-right:0}
+.spec h3{margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.spec p{margin:0;font-size:15px;color:var(--cream)}
+.spec p small{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+
+.eng{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:34px;align-items:center}
+.eng ol{margin:0;padding:0;list-style:none;counter-reset:n}
+.eng li{counter-increment:n;padding:16px 0 16px 52px;border-bottom:1px solid var(--line);position:relative}
+.eng li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:var(--serif);font-size:26px;color:var(--gold)}
+.eng li b{display:block;font-weight:600;margin-bottom:2px}
+.eng li span{color:var(--muted);font-size:14.5px}
+.eng img{width:100%;border-radius:14px;background:#efe6d6}
+
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.howto div{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.howto b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;margin-bottom:6px}
+.howto p{margin:0;color:var(--muted);font-size:14.5px}
+
+footer{padding:34px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(8,6,5,.94);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;border-radius:10px}
+.lb button{all:unset;position:absolute;top:16px;right:20px;cursor:pointer;color:var(--cream);font-size:30px;line-height:1;padding:8px}
+
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;gap:26px;padding-top:18px}
+  .stage,model-viewer{min-height:68vh}
+  nav.anchors{display:none}
+  .spec{grid-template-columns:1fr 1fr}.spec div:nth-child(3n){border-right:1px solid var(--line)}.spec div:nth-child(2n){border-right:0}
+  .eng,.howto{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .g-a,.g-b,.g-c,.g-w,.g-s,.g-full{grid-column:span 2}
+  .g-c{grid-column:span 1}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .variants{top:12px;left:12px}
+  .variants button{padding:6px 11px;font-size:12px}
+  .tools{top:58px;left:12px;right:auto}
+  .qr{display:none}
+  .spec{grid-template-columns:1fr}.spec div{border-right:0!important}
+  .facts{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}.g-a,.g-b,.g-c,.g-w,.g-s,.g-full{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><b>75LAB</b> · Proposta para Lactalis / Président</div>
+  <nav class="anchors"><a href="#ar">3D e AR</a><a href="#imagens">Imagens</a><a href="#ficha">Ficha técnica</a><a href="#engenharia">Engenharia</a><a href="#como">Como usar o AR</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero" id="ar">
+    <div class="stage">
+      <model-viewer id="mv" src="assets/3d/expositor-president-abastecido.glb" ios-src="assets/3d/expositor-president-abastecido.usdz"
+        poster="assets/img/poster.webp" alt="Expositor de chão Président em madeira com prateleiras e ganchos"
+        ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" ar-placement="floor"
+        camera-controls touch-action="pan-y" camera-orbit="-31.7deg 79deg 3.45m" camera-target="0.02m 0.66m 0m" field-of-view="29deg"
+        min-camera-orbit="auto 20deg 1.2m" max-camera-orbit="auto 95deg 5m" shadow-intensity="1" shadow-softness="0.85"
+        environment-image="neutral" exposure="1.05" tone-mapping="neutral" interaction-prompt="auto">
+        <button class="hotspot" slot="hotspot-a" data-position="0m 0.02m 0.19m" data-normal="0m 0m 1m">400 mm</button>
+        <button class="hotspot" slot="hotspot-b" data-position="0.22m 0.02m 0m" data-normal="1m 0m 0m">300 mm</button>
+        <button class="hotspot" slot="hotspot-c" data-position="0.22m 1.40m 0.02m" data-normal="1m 0m 0m">1.400 mm</button>
+        <button slot="ar-button" class="ar-btn" aria-label="Ver o expositor no seu espaço em realidade aumentada">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><path d="M12 11l8-4.5M12 11v9M12 11L4 6.5"/></svg>
+          Ver no espaço · tamanho real
+        </button>
+      </model-viewer>
+      <div class="variants" role="group" aria-label="Versão do modelo">
+        <button aria-pressed="true" data-v="abastecido">Abastecido</button>
+        <button aria-pressed="false" data-v="vazio">Vazio</button>
+        <button aria-pressed="false" data-v="explodido">Explodido</button>
+      </div>
+      <div class="tools"><button class="chip" id="medidas" aria-pressed="false">Medidas</button></div>
+    </div>
+
+    <div class="intro">
+      <div class="eyebrow">Expositor de chão · Rede Festval · 25 lojas</div>
+      <h1>Madeira, louros e <em>vermelho Président</em>.</h1>
+      <p class="lede">Um móvel de fromagerie em tamanho de ponto de venda: laterais em curva de carvalho, testeira em arco com o logo, duas prateleiras e ganchos para o ralado — no mesmo idioma de madeira e luz das lojas Festval.</p>
+      <dl class="facts">
+        <div><dt>Medidas</dt><dd>1,40 m × 40 cm × 30 cm</dd></div>
+        <div><dt>Estrutura</dt><dd>MDP 15 mm BP Carvalho</dd></div>
+        <div><dt>Exposição</dt><dd>2 prateleiras + 6 ganchos</dd></div>
+        <div><dt>Montagem</dt><dd>Pronto da fábrica, sem parafusos aparentes</dd></div>
+      </dl>
+      <div class="qr">
+        <img src="assets/qr.svg" alt="QR Code para abrir esta página no celular">
+        <div><strong>Coloque o expositor no corredor.</strong><p>Aponte a câmera do celular para o QR e toque em “Ver no espaço”: o modelo aparece no piso, em tamanho real.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="imagens">
+    <h2>Imagens do <em>projeto</em></h2>
+    <p class="sub">Renders físicos (path tracing) do modelo usado na produção: as mesmas medidas, artes e materiais das facas. Produtos e embalagens são ilustrativos.</p>
+    <div class="gallery" id="gallery"><figure class="g-a" data-full="assets/img/01_hero-3-4.jpg"><img src="assets/img/01_hero-3-4_900.jpg" alt="Vista 3/4 · abastecido" loading="lazy"><figcaption>Vista 3/4 · abastecido</figcaption></figure>
+<figure class="g-b" data-full="assets/img/02_frente.jpg"><img src="assets/img/02_frente_900.jpg" alt="Vista frontal" loading="lazy"><figcaption>Vista frontal</figcaption></figure>
+<figure class="g-c" data-full="assets/img/03_lateral.jpg"><img src="assets/img/03_lateral_900.jpg" alt="Lateral · curva em S e emblema" loading="lazy"><figcaption>Lateral · curva em S e emblema</figcaption></figure>
+<figure class="g-w" data-full="assets/img/05_detalhe-testeira.jpg"><img src="assets/img/05_detalhe-testeira_900.jpg" alt="Testeira com coroa em arco" loading="lazy"><figcaption>Testeira com coroa em arco</figcaption></figure>
+<figure class="g-s" data-full="assets/img/07_explodida.jpg"><img src="assets/img/07_explodida_900.jpg" alt="Vista explodida · 9 peças" loading="lazy"><figcaption>Vista explodida · 9 peças</figcaption></figure>
+<figure class="g-a" data-full="assets/img/04_vazio-3-4.jpg"><img src="assets/img/04_vazio-3-4_900.jpg" alt="Estrutura em MDP BP Carvalho" loading="lazy"><figcaption>Estrutura em MDP BP Carvalho</figcaption></figure>
+<figure class="g-b" data-full="assets/img/06_detalhe-prateleiras.jpg"><img src="assets/img/06_detalhe-prateleiras_900.jpg" alt="Prateleiras: frações e cilindros" loading="lazy"><figcaption>Prateleiras: frações e cilindros</figcaption></figure>
+<figure class="g-c" data-full="assets/img/amb_01_loja-festval_novo-expositor.jpg"><img src="assets/img/amb_01_loja-festval_novo-expositor_900.jpg" alt="Ambientação na loja Festval (imagem ilustrativa)" loading="lazy"><figcaption>Ambientação na loja Festval (imagem ilustrativa)</figcaption></figure>
+<figure class="g-full" data-full="assets/img/amb_02_ar-celular-corredor.jpg"><img src="assets/img/amb_02_ar-celular-corredor_900.jpg" alt="Realidade aumentada no corredor (ambientação)" loading="lazy"><figcaption>Realidade aumentada no corredor (ambientação)</figcaption></figure>
+</div>
+  </section>
+
+  <section id="ficha">
+    <h2>Ficha <em>técnica</em></h2>
+    <p class="sub">Resumo do caderno técnico entregue à produção (desenhos, facas DXF, plano de corte e artes em PSD/PDF).</p>
+    <div class="spec">
+      <div><h3>Dimensões</h3><p>1400 × 400 × 300 mm<small>Laterais de 1360 mm + coroa em arco de 40 mm na testeira</small></p></div>
+      <div><h3>Estrutura</h3><p>MDP 15 mm BP Carvalho, 2 faces<small>Fita de borda Carvalho em todo o contorno</small></p></div>
+      <div><h3>Comunicação</h3><p>Testeira, saia e frente em vinil<small>Costas com impressão UV direta · emblema nas laterais</small></p></div>
+      <div><h3>Prateleiras</h3><p>A · cilindros (300 mm do piso)<small>B · pedaços e frações (545 mm do piso), vão de 230 mm</small></p></div>
+      <div><h3>Ganchos</h3><p>6 × 150 mm, pretos<small>Para o queijo ralado · 3 posições extras de reconfiguração</small></p></div>
+      <div><h3>União</h3><p>Rebaixos + cavilhas + cola<small>Montado na fábrica · sem fita VHB ou dupla-face na estrutura</small></p></div>
+      <div><h3>Peso e estabilidade</h3><p>≈ 14 kg vazio<small>Não tomba com 13° de inclinação · cinta anti-tombamento inclusa</small></p></div>
+      <div><h3>Capacidade (estimada)</h3><p>≈ 42 sachês + 2 prateleiras<small>Até 15 kg por prateleira</small></p></div>
+      <div><h3>Lote</h3><p>25 expositores<small>7 chapas BP + 3 chapas MDF 6 mm</small></p></div>
+    </div>
+  </section>
+
+  <section id="engenharia">
+    <div class="eng">
+      <div>
+        <h2>Desenhado para <em>caber na chapa</em></h2>
+        <p class="sub">Pequenos ajustes de medida que reduzem material sem mudar o tamanho do expositor.</p>
+        <ol>
+          <li><b>Laterais de 1360 mm + coroa de 40 mm</b><span>Duas laterais por comprimento de chapa com o veio da madeira na vertical. Com 1400 mm seriam 9 chapas; assim são 7.</span></li>
+          <li><b>Curva em S espelhada</b><span>A curva frontal é simétrica em relação ao centro: duas laterais se encaixam viradas uma contra a outra, sem sobra entre elas.</span></li>
+          <li><b>Costas de 380 mm</b><span>Nove painéis por chapa de MDF 6 mm em vez de oito: 3 chapas para o lote, com 2 costas de reposição para troca de arte.</span></li>
+        </ol>
+      </div>
+      <figure style="margin:0"><img src="assets/img/plano-de-corte.png" alt="Plano de corte de uma chapa: 12 laterais encaixadas pela curva em S e 7 saias"><figcaption style="color:var(--muted);font-size:13px;margin-top:8px">Chapa 1 de 7 · 12 laterais e 7 saias · 92% de aproveitamento</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="como">
+    <h2>Como ver em <em>realidade aumentada</em></h2>
+    <p class="sub">Funciona no navegador do celular, sem aplicativo.</p>
+    <div class="howto">
+      <div><b>1 · Abra no celular</b><p>Aponte a câmera para o QR desta página ou envie o link pelo WhatsApp.</p></div>
+      <div><b>2 · Toque em “Ver no espaço”</b><p>iPhone abre no AR Quick Look; Android, no Google Scene Viewer. Mova o celular para encontrar o piso.</p></div>
+      <div><b>3 · Posicione em tamanho real</b><p>O expositor aparece com 1,40 m de altura. Arraste para o ponto do corredor e gire com dois dedos.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>75LAB · Proposta conceitual para Lactalis / Président · outubro de 2026</span>
+  <span>Produtos e embalagens ilustrativos · logotipo em prévia, a substituir pelo arquivo oficial</span>
+</div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada"><button aria-label="Fechar">×</button><img alt=""></div>
+
+<script>
+const mv = document.getElementById('mv');
+const V = {
+  abastecido: { src: 'assets/3d/expositor-president-abastecido.glb', ios: 'assets/3d/expositor-president-abastecido.usdz' },
+  vazio: { src: 'assets/3d/expositor-president.glb', ios: 'assets/3d/expositor-president.usdz' },
+  explodido: { src: 'assets/3d/expositor-president-explodido.glb', ios: '' },
+};
+document.querySelectorAll('.variants button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.variants button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  const v = V[b.dataset.v];
+  mv.src = v.src;
+  if (v.ios) { mv.setAttribute('ios-src', v.ios); mv.setAttribute('ar', ''); } else { mv.removeAttribute('ios-src'); mv.removeAttribute('ar'); }
+  mv.cameraOrbit = b.dataset.v === 'explodido' ? '-35deg 70deg 3.8m' : '-31.7deg 79deg 3.45m';
+}));
+const med = document.getElementById('medidas');
+med.addEventListener('click', () => { const on = med.getAttribute('aria-pressed') !== 'true'; med.setAttribute('aria-pressed', on); mv.toggleAttribute('data-medidas', on); });
+const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+document.getElementById('gallery').addEventListener('click', e => { const f = e.target.closest('figure'); if (!f) return; lbImg.src = f.dataset.full; lbImg.alt = f.querySelector('img').alt; lb.classList.add('on'); });
+lb.addEventListener('click', () => lb.classList.remove('on'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+</script>
+</body>
+</html>
